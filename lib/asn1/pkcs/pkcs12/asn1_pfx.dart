@@ -13,10 +13,9 @@ import 'package:pointycastle/asn1.dart';
 ///
 class ASN1Pfx extends ASN1Object {
   late ASN1Integer version;
-  late ASN1ContentInfo authSafe;
   ASN1MacData? macData;
 
-  ASN1Pfx(this.version, this.authSafe, {this.macData});
+  ASN1Pfx(this.version, {this.macData});
 
   ///
   /// Creates an instance of [PFX] from the given [sequence]. The sequence must have at least 2 elements.
@@ -32,8 +31,6 @@ class ASN1Pfx extends ASN1Object {
     if (version.integer!.toInt() != 3) {
       throw ArgumentError('Wrong version for PFX PDU');
     }
-    authSafe = ASN1ContentInfo.fromSequence(
-        seq.elements!.elementAt(1) as ASN1Sequence);
     if (seq.elements!.length == 3) {
       macData =
           ASN1MacData.fromSequence(seq.elements!.elementAt(2) as ASN1Sequence);
@@ -43,7 +40,7 @@ class ASN1Pfx extends ASN1Object {
   @override
   Uint8List encode(
       {ASN1EncodingRule encodingRule = ASN1EncodingRule.ENCODING_DER}) {
-    var tmp = ASN1Sequence(elements: [version, authSafe]);
+    var tmp = ASN1Sequence(elements: [version]);
     if (macData != null) {
       tmp.add(macData!);
     }

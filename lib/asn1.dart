@@ -35,10 +35,6 @@ export 'asn1/x509/asn1_algorithm_identifier.dart';
 // PKCS7
 export 'asn1/pkcs/pkcs1/asn1_digest_info.dart';
 
-// PKCS7
-export 'asn1/pkcs/pkcs7/asn1_content_info.dart';
-export 'asn1/pkcs/pkcs7/asn1_encrypted_content_info.dart';
-
 // PKCS8
 export 'asn1/pkcs/pkcs8/asn1_encrypted_data.dart';
 export 'asn1/pkcs/pkcs8/asn1_encrypted_private_key_info.dart';
