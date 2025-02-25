@@ -143,7 +143,6 @@ void _registerPaddedBlockCiphers(FactoryRegistry registry) {
 }
 
 void _registerPaddings(FactoryRegistry registry) {
-  registry.register(PKCS7Padding.factoryConfig);
   registry.register(ISO7816d4Padding.factoryConfig);
 }
 
